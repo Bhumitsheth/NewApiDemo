@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bs.newapidemo.databinding.ActivityLoadBinding
 
 class LoadActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoadBinding
+
     private val productViewModel by lazy {
         ViewModelProvider(
             this,
@@ -18,10 +20,13 @@ class LoadActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityLoadBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
         productViewModel.products.observe(this) { resource ->
             when (resource) {
                 is Resource.Loading -> showLoading()
